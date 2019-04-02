@@ -17,6 +17,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        entrar = findViewById(R.id.btnEntrar);
+        entrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent entrar = new Intent(MainActivity.this, com.example.protectora.Principal.class);
+                startActivity(entrar);
+            }
+        });
+
+/*
+
         entrar = (Button)findViewById(R.id.btnEntrar);
         txtNombreUsuario = (EditText) findViewById(R.id.txtNombreUsuario);
         edittxtContrasenaUsuario = (EditText) findViewById(R.id.txtContrasenaUsuario);
@@ -48,6 +59,6 @@ public class MainActivity extends AppCompatActivity {
             //PRUEBA DE AQUÍ AL FINAL
             
 
-        }
+        }*/
     }
 }

@@ -21,8 +21,8 @@ public class Principal extends AppCompatActivity {
         tareas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent personas = new Intent(Principal.this, com.example.protectora.TareasActivity.class);
-                startActivity(personas);
+                Intent tareas = new Intent(Principal.this, com.example.protectora.TareasActivity.class);
+                startActivity(tareas);
             }
         });
 

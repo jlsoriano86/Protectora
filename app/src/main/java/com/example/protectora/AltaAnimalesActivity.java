@@ -23,7 +23,7 @@ public class AltaAnimalesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_alta_animales);
     }
 
     public void clicObtener(View view) {
