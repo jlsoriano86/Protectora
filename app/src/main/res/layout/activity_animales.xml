@@ -13,26 +13,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="ALTA" />
+        android:textSize="25sp"
+        android:text="Crear"
+        android:textStyle="bold"
+        android:shadowColor="@color/text_shadow_white"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnBajaAnimales"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="BAJA" />
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:shadowColor="@color/text_shadow_white"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textAllCaps="false"
+        android:text="Eliminar" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnModificarAnimales"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="MODIFICACIÓN" />
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:shadowColor="@color/text_shadow_white"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textAllCaps="false"
+        android:text="Modificar" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnConsultarAnimales"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="CONSULTA" />
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:shadowColor="@color/text_shadow_white"
+        android:shadowDx="-2"
+        android:shadowDy="-2"
+        android:shadowRadius="1"
+        android:textAllCaps="false"
+        android:text="Consultar" />
 </LinearLayout>

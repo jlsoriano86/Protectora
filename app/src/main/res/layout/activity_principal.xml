@@ -10,25 +10,18 @@
 
     <ImageView
         android:id="@+id/imgTareas"
-        android:layout_width="200dp"
-        android:layout_height="130dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         app:srcCompat="@drawable/tareas" />
 
     <ImageView
         android:id="@+id/imgAnimales"
-        android:layout_width="200dp"
-        android:layout_height="130dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         app:srcCompat="@drawable/animales" />
 
-    <ImageView
-        android:id="@+id/imgTratamientos"
-        android:layout_width="200dp"
-        android:layout_height="130dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        app:srcCompat="@drawable/tratamientos" />
 </LinearLayout>

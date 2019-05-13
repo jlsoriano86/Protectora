@@ -35,13 +35,6 @@ public class Principal extends AppCompatActivity {
             }
         });
 
-        tratamientos = (ImageView) findViewById(R.id.imgTratamientos);
-        tratamientos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent tratamientos = new Intent(Principal.this, com.example.protectora.TratamientosActivity.class);
-                startActivity(tratamientos);
-            }
-        });
+
     }
 }
