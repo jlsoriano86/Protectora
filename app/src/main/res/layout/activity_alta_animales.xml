@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
-<LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:padding="16dp"
-tools:context=".AltaAnimalesActivity">
-
-<RadioGroup
-    android:id="@+id/radOrigen"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoapp"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".AltaAnimalesActivity">
 
-    <RadioButton
-        android:id="@+id/radCamara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Desde la cámara" />
+    <RadioGroup
+        android:background="#ddffffff"
+        android:id="@+id/radOrigen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <RadioButton
-        android:id="@+id/radGaleria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Desde la Galería" />
-</RadioGroup>
+        <RadioButton
+            android:id="@+id/radCamara"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Desde la cámara" />
+
+        <RadioButton
+            android:id="@+id/radGaleria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Desde la Galería" />
+    </RadioGroup>
 
     <Button
         android:layout_width="match_parent"
@@ -38,6 +38,7 @@ tools:context=".AltaAnimalesActivity">
         android:text="Obtener foto" />
 
     <FrameLayout
+
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
@@ -51,6 +52,7 @@ tools:context=".AltaAnimalesActivity">
     </FrameLayout>
 
     <LinearLayout
+        android:background="#ddffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -60,7 +62,8 @@ tools:context=".AltaAnimalesActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nombre:" />
+            android:text="Nombre:"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/txtNombre"
@@ -75,6 +78,7 @@ tools:context=".AltaAnimalesActivity">
     </LinearLayout>
 
     <LinearLayout
+        android:background="#ddffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -84,7 +88,8 @@ tools:context=".AltaAnimalesActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Fecha de Nacimiento:" />
+            android:text="Fecha de Nacimiento:"
+            android:textColor="@android:color/black" />
 
         <EditText
             android:id="@+id/txtNacimiento"
@@ -99,6 +104,7 @@ tools:context=".AltaAnimalesActivity">
     </LinearLayout>
 
     <LinearLayout
+        android:background="#ddffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -108,7 +114,8 @@ tools:context=".AltaAnimalesActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tipo de animal" />
+            android:text="Tipo de animal"
+            android:textColor="@android:color/black" />
 
         <Spinner
             android:id="@+id/spTipo"
@@ -119,6 +126,7 @@ tools:context=".AltaAnimalesActivity">
     </LinearLayout>
 
     <LinearLayout
+        android:background="#ddffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -128,7 +136,8 @@ tools:context=".AltaAnimalesActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Estado:" />
+            android:text="Estado:"
+            android:textColor="@android:color/black" />
 
         <Spinner
             android:id="@+id/spEstado"
@@ -138,5 +147,11 @@ tools:context=".AltaAnimalesActivity">
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DAR DE ALTA" />
 
 </LinearLayout>

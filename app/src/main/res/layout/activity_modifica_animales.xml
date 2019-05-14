@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/fondoapp"
     tools:context=".ModificaAnimalesActivity">
 
     <LinearLayout
@@ -49,6 +50,7 @@
         </FrameLayout>
 
         <LinearLayout
+            android:background="#ddffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -58,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:text="Nombre:" />
 
             <EditText
@@ -66,12 +69,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textColor="@android:color/black"
                 android:inputType="textPersonName" />
 
 
         </LinearLayout>
 
         <LinearLayout
+            android:background="#ddffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -81,6 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:text="Fecha de Nacimiento:" />
 
             <EditText
@@ -89,12 +95,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textColor="@android:color/black"
                 android:inputType="textPersonName" />
 
 
         </LinearLayout>
 
         <LinearLayout
+            android:background="#ddffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -104,17 +112,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:text="Tipo de animal" />
 
             <Spinner
                 android:id="@+id/spTipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:layout_weight="1" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:background="#ddffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -124,16 +135,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:text="Estado:" />
 
             <Spinner
                 android:id="@+id/spEstado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
+            android:background="#ddffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -143,6 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:text="Enfermedad:" />
 
             <EditText
@@ -151,9 +166,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textColor="@android:color/black"
                 android:inputType="textPersonName" />
         </LinearLayout>
         <LinearLayout
+            android:background="#ddffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -163,6 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:text="Fecha Infección:" />
 
             <EditText
@@ -171,10 +189,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textColor="@android:color/black"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
+            android:background="#ddffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -184,6 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:text="Fecha Cura:" />
 
             <EditText
@@ -192,10 +213,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textColor="@android:color/black"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
+            android:background="#ddffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -205,6 +228,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:text="Tratamiento:" />
 
             <EditText
@@ -213,10 +237,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textColor="@android:color/black"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
+            android:background="#ddffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -226,6 +252,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:text="Fecha Inicio Tratamiento:" />
 
             <EditText
@@ -234,10 +261,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textColor="@android:color/black"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
+            android:background="#ddffffff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -247,6 +276,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:text="Fecha Fin Tratamiento:" />
 
             <EditText
@@ -255,6 +285,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textColor="@android:color/black"
                 android:inputType="textPersonName" />
 
         </LinearLayout>
