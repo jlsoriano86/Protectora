@@ -39,8 +39,8 @@
 
     <FrameLayout
 
-        android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:padding="16dp">
 
@@ -66,13 +66,13 @@
             android:textColor="@android:color/black" />
 
         <EditText
-            android:id="@+id/txtID"
+            android:id="@+id/txtNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Introduzca el nombre" />
+            android:hint="Introduzca el nombre"
+            android:inputType="textPersonName" />
 
 
     </LinearLayout>
@@ -97,8 +97,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Introduzca fecha" />
+            android:hint="Introduzca fecha"
+            android:inputType="textPersonName" />
 
 
     </LinearLayout>

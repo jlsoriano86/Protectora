@@ -9,7 +9,7 @@ import android.widget.ImageView;
 public class Principal extends AppCompatActivity {
     ImageView tareas;
     ImageView animales;
-    ImageView tratamientos;
+    ImageView incidencias;
 
 
     @Override
@@ -34,6 +34,16 @@ public class Principal extends AppCompatActivity {
                 startActivity(animales);
             }
         });
+
+        incidencias = (ImageView) findViewById(R.id.imgIncidencias);
+        incidencias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent incidencias = new Intent(Principal.this, com.example.protectora.IncidenciasActivity.class);
+                startActivity(incidencias);
+            }
+        });
+
 
 
     }
