@@ -14,7 +14,7 @@
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         app:srcCompat="@drawable/tareas" />
 
     <ImageView
@@ -22,7 +22,15 @@
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         app:srcCompat="@drawable/animales" />
+
+    <ImageView
+        android:id="@+id/imgIncidencias"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/incidencias" />
 
 </LinearLayout>
