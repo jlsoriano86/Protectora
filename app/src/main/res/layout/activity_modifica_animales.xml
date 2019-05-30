@@ -64,8 +64,8 @@
             android:text="Obtener foto" />
 
         <FrameLayout
-            android:layout_width="250dp"
-            android:layout_height="300dp"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
             android:layout_gravity="center"
             android:padding="16dp">
 
@@ -168,12 +168,14 @@
                 android:textColor="@android:color/black"
                 android:text="Tipo de animal" />
 
-            <Spinner
-                android:id="@+id/spTipo"
+            <EditText
+                android:id="@+id/txtTipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
                 android:textColor="@android:color/black"
-                android:layout_weight="1" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 
