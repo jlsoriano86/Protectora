@@ -47,16 +47,16 @@ public class AltaAnimalesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alta_animales);
 
         imgImagen=(ImageView) findViewById(R.id.imgImagen);
-        txtNombre=(EditText)findViewById(R.id.txtNombre);
+        txtNombre=(EditText)findViewById(R.id.txtId);
         txtNacimiento=(EditText)findViewById(R.id.txtNacimiento);
         txtTipo=(EditText)findViewById(R.id.txtTipo);
-        spEstado=(Spinner)findViewById(R.id.spEstado);
+        spEstado=(Spinner)findViewById(R.id.txtEstado);
         btnAlta=(Button) findViewById(R.id.btnAlta);
 
         btnAlta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ejecutarServicio("http://protectora-animales.ddns.net/phpMyAdmin/api/animals/getAnimals.php");
+                ejecutarAlta("http://protectora-animales.ddns.net/phpMyAdmin/api/animals/postAnimals.php");
             }
         });
 
@@ -105,7 +105,7 @@ public class AltaAnimalesActivity extends AppCompatActivity {
         imgImagen.setImageBitmap(imagen);
     }
 
-    private void ejecutarServicio(String URL){
+    private void ejecutarAlta(String URL){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -121,14 +121,12 @@ public class AltaAnimalesActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros=new HashMap<String, String>();
-                // ID parametros.put("id",edtId.getText().toString());
-                parametros.put("birthDate",txtNacimiento.getText().toString());
-                parametros.put("type",txtTipo.getText().toString());
-                parametros.put("name",txtNombre.getText().toString());
-                parametros.put("state", spEstado.toString());
+                parametros.put("birth",txtNacimiento.getText().toString());
+                parametros.put("animal_type",txtTipo.getText().toString());
+                parametros.put("animal_name",txtNombre.getText().toString());
+                parametros.put("state_id", spEstado.toString());
                 //¿state_desc?
                 parametros.put("img",imgImagen.toString());
-
 
                 return parametros;
             }

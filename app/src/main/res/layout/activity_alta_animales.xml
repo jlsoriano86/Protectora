@@ -66,7 +66,7 @@
             android:textColor="@android:color/black" />
 
         <EditText
-            android:id="@+id/txtNombre"
+            android:id="@+id/txtId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -143,7 +143,7 @@
             android:textColor="@android:color/black" />
 
         <Spinner
-            android:id="@+id/spEstado"
+            android:id="@+id/txtEstado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
