@@ -13,11 +13,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AltaAnimalesActivity extends AppCompatActivity {
 
@@ -43,6 +52,14 @@ public class AltaAnimalesActivity extends AppCompatActivity {
         txtTipo=(EditText)findViewById(R.id.txtTipo);
         spEstado=(Spinner)findViewById(R.id.spEstado);
         btnAlta=(Button) findViewById(R.id.btnAlta);
+
+        btnAlta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ejecutarServicio("http://protectora-animales.ddns.net/phpMyAdmin/api/animals/getAnimals.php");
+            }
+        });
+
     }
 
     public void clicObtener(View view) {
@@ -86,5 +103,39 @@ public class AltaAnimalesActivity extends AppCompatActivity {
 
         ImageView imgImagen = findViewById(R.id.imgImagen);
         imgImagen.setImageBitmap(imagen);
+    }
+
+    private void ejecutarServicio(String URL){
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "Animal registrado", Toast.LENGTH_SHORT).show();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        } ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros=new HashMap<String, String>();
+                // ID parametros.put("id",edtId.getText().toString());
+                parametros.put("birthDate",txtNacimiento.getText().toString());
+                parametros.put("type",txtTipo.getText().toString());
+                parametros.put("name",txtNombre.getText().toString());
+                parametros.put("state", spEstado.toString());
+                //¿state_desc?
+                parametros.put("img",imgImagen.toString());
+
+
+                return parametros;
+            }
+        };
+        requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+
     }
 }
