@@ -117,11 +117,14 @@
             android:text="Tipo de animal"
             android:textColor="@android:color/black" />
 
-        <Spinner
-            android:id="@+id/spTipo"
+        <EditText
+            android:id="@+id/txtTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Ej: Perro, gato..."
+            android:inputType="textPersonName" />
 
     </LinearLayout>
 
@@ -149,7 +152,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnAlta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="DAR DE ALTA" />

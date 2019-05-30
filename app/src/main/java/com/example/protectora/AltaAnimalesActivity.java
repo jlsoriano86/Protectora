@@ -8,13 +8,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Spinner;
+
+import com.android.volley.RequestQueue;
 
 import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
 
 public class AltaAnimalesActivity extends AppCompatActivity {
+
+    ImageView imgImagen;
+    EditText txtNombre, txtNacimiento, txtTipo;
+    Spinner spEstado;
+    Button btnAlta;
+
+    RequestQueue requestQueue;
 
     // Constantes para identificar la procedencia de la acción solicitada:
     private static int DESDE_CAMARA = 1;
@@ -24,6 +36,13 @@ public class AltaAnimalesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alta_animales);
+
+        imgImagen=(ImageView) findViewById(R.id.imgImagen);
+        txtNombre=(EditText)findViewById(R.id.txtNombre);
+        txtNacimiento=(EditText)findViewById(R.id.txtNacimiento);
+        txtTipo=(EditText)findViewById(R.id.txtTipo);
+        spEstado=(Spinner)findViewById(R.id.spEstado);
+        btnAlta=(Button) findViewById(R.id.btnAlta);
     }
 
     public void clicObtener(View view) {

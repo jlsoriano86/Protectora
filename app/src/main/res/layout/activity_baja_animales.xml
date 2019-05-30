@@ -16,7 +16,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/lblNombre"
+            android:id="@+id/AnimalNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -24,7 +24,7 @@
             android:textColor="@android:color/black" />
 
         <Spinner
-            android:id="@+id/spNombre"
+            android:id="@+id/spAnimal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
