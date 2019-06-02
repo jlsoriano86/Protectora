@@ -66,7 +66,7 @@
             android:textColor="@android:color/black" />
 
         <EditText
-            android:id="@+id/txtId"
+            android:id="@+id/txtTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

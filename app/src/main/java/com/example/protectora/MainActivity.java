@@ -36,7 +36,9 @@ public class MainActivity extends AppCompatActivity {
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                entrarPass("http://protectora-animales.ddns.net/phpMyAdmin/api/login/consultarusuario.php?user=" + txtNombreUsuario.getText().toString());
+              //  entrarPass("http://protectora-animales.ddns.net/phpMyAdmin/api/login/consultarusuario.php?user=" + txtNombreUsuario.getText().toString());
+                Intent entrar = new Intent(MainActivity.this, com.example.protectora.Principal.class);
+                startActivity(entrar);
             }
         });
     }

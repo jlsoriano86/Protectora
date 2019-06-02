@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,7 +17,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -27,7 +24,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
 import java.util.ArrayList;
 
 public class ConsultaAnimalesActivity extends AppCompatActivity {
@@ -53,7 +49,7 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
 
 
         imgImagen = (ImageView) findViewById(R.id.imgImagen);
-        txtId = (TextView) findViewById(R.id.txtId);
+        txtId = (TextView) findViewById(R.id.txtTitulo);
         txtNacimiento = (TextView) findViewById(R.id.txtNacimiento);
         txtTipo = (TextView) findViewById(R.id.txtTipo);
         txtEstado = (TextView) findViewById(R.id.txtEstado);

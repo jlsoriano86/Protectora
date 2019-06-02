@@ -47,7 +47,7 @@ public class AltaAnimalesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alta_animales);
 
         imgImagen=(ImageView) findViewById(R.id.imgImagen);
-        txtNombre=(EditText)findViewById(R.id.txtId);
+        txtNombre=(EditText)findViewById(R.id.txtTitulo);
         txtNacimiento=(EditText)findViewById(R.id.txtNacimiento);
         txtTipo=(EditText)findViewById(R.id.txtTipo);
         spEstado=(Spinner)findViewById(R.id.txtEstado);
@@ -125,7 +125,6 @@ public class AltaAnimalesActivity extends AppCompatActivity {
                 parametros.put("animal_type",txtTipo.getText().toString());
                 parametros.put("animal_name",txtNombre.getText().toString());
                 parametros.put("state_id", spEstado.toString());
-                //¿state_desc?
                 parametros.put("img",imgImagen.toString());
 
                 return parametros;
