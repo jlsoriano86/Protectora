@@ -3,6 +3,7 @@ package com.example.protectora;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,12 +43,14 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
         txtTipo = (TextView) findViewById(R.id.txtTipo);
         txtEstado = (TextView) findViewById(R.id.txtEstado);
 
+        /*spAnimal.setOnItemSelectedListener(this);
+
         spAnimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buscarAnimal("http://protectora-animales.ddns.net/phpMyAdmin/api/animals/getAnimals.php");
             }
-        });
+        });*/
     }
 
         private void buscarAnimal(String URL){
@@ -58,6 +61,7 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
                     for (int i = 0; i < response.length(); i++) {
                         try {
                             jsonObject = response.getJSONObject(i);
+                           // spAnimal.setOnItemSelectedListener(jsonObject.getString());
                             txtId.setText(jsonObject.getString("idAnimales"));
                             txtNacimiento.setText(jsonObject.getString("fechaNacimientoAnimales"));
                             txtTipo.setText(jsonObject.getString("tipoAnimales"));
