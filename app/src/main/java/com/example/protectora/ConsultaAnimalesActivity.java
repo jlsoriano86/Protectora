@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class ConsultaAnimalesActivity extends AppCompatActivity {
     Spinner spAnimal;
-    String URL="http://protectora-animales.ddns.net/phpMyAdmin/api/animals/getAnimals.php";
+    String URL="http://protectora-animales.ddns.net/api/animals/getAnimals.php";
     ArrayList<String> lstAnimales;
 
     ImageView imgImagen;

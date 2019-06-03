@@ -51,7 +51,7 @@ public class IncidenciasActivity extends AppCompatActivity {
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ejecutarIncidencia("http://protectora-animales.ddns.net/phpMyAdmin/api/incidencias/postIncidencias.php");
+                ejecutarIncidencia("http://protectora-animales.ddns.net/api/incidencias/postIncidencias.php");
             }
         });
 

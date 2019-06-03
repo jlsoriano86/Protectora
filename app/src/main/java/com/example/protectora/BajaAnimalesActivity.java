@@ -43,7 +43,7 @@ public class BajaAnimalesActivity extends AppCompatActivity {
         btnBaja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ejecutarBaja("http://protectora-animales.ddns.net/phpMyAdmin/api/animals/deleteAnimalById.php");
+                ejecutarBaja("http://protectora-animales.ddns.net/api/animals/deleteAnimalById.php");
             }
         });
 

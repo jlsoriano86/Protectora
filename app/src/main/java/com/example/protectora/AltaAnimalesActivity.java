@@ -56,7 +56,7 @@ public class AltaAnimalesActivity extends AppCompatActivity {
         btnAlta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ejecutarAlta("http://protectora-animales.ddns.net/phpMyAdmin/api/animals/postAnimals.php");
+                ejecutarAlta("http://protectora-animales.ddns.net/api/animals/postAnimals.php");
             }
         });
 
