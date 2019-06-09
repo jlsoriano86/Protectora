@@ -25,18 +25,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ConsultaAnimalesActivity extends AppCompatActivity {
     Spinner spAnimal;
-    String URL="http://protectora-animales.ddns.net/api/animals/getAnimals.php";
+    String URL="http://5.154.58.36/apiAndroid/api/animals/getAnimals.php/";
     ArrayList<String> lstAnimales;
 
     ImageView imgImagen;
     TextView txtId, txtNacimiento, txtTipo, txtEstado;
     RequestQueue requestQueue;
-
-
-
+    List<String> animales = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +43,6 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_consulta_animales);
         lstAnimales=new ArrayList<>();
         spAnimal = (Spinner) findViewById(R.id.spAnimal);
-        buscarAnimal(URL);
-
 
 
         imgImagen = (ImageView) findViewById(R.id.imgImagen);
@@ -53,6 +50,10 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
         txtNacimiento = (TextView) findViewById(R.id.txtNacimiento);
         txtTipo = (TextView) findViewById(R.id.txtTipo);
         txtEstado = (TextView) findViewById(R.id.txtEstado);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, animales);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spAnimal.setAdapter(dataAdapter);
         spAnimal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -66,51 +67,9 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
             }
 
         });
+        buscarAnimal(URL);
 
     }
-
-        /*spAnimal.setOnItemSelectedListener(this);
-
-        spAnimal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buscarAnimal("http://protectora-animales.ddns.net/phpMyAdmin/api/animals/getAnimals.php");
-            }
-        });
-    }
-
-        private void buscarAnimal(String URL){
-            JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
-                @Override
-                public void onResponse(JSONArray response) {
-                    JSONObject jsonObject = null;
-                    for (int i = 0; i < response.length(); i++) {
-                        try {
-                            jsonObject = response.getJSONObject(i);
-                           // spAnimal.setOnItemSelectedListener(jsonObject.getString());
-                            txtId.setText(jsonObject.getString("idAnimales"));
-                            txtNacimiento.setText(jsonObject.getString("fechaNacimientoAnimales"));
-                            txtTipo.setText(jsonObject.getString("tipoAnimales"));
-                            txtEstado.setText(jsonObject.getString("descripcionEstadoAnimales"));
-                        } catch (JSONException e) {
-                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(),"Error de conexión",Toast.LENGTH_SHORT).show();
-                }
-            }
-
-
-            );
-            requestQueue= Volley.newRequestQueue(this);
-            requestQueue.add(jsonArrayRequest);
-        }*/
-
-
 
 
 
@@ -119,25 +78,20 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
         StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                try{
-                    JSONObject jsonObject=new JSONObject(response);
-                    if(jsonObject.getInt("success")==1){
-                        JSONArray jsonArray=jsonObject.getJSONArray("name");
-                        for(int i=0;i<jsonArray.length();i++){
-                            JSONObject jsonObject1=jsonArray.getJSONObject(i);
-                            String animal=jsonObject1.getString("id");
-                            txtNacimiento.setText(jsonObject.getString("fechaNacimientoAnimales"));
-                            txtTipo.setText(jsonObject.getString("tipoAnimales"));
-                            txtEstado.setText(jsonObject.getString("descripcionEstadoAnimales"));
-                            /*String animal=jsonObject1.getString("birthDate");
-                            String animal=jsonObject1.getString("type");
-                            String animal=jsonObject1.getString("state");*/
-                            lstAnimales.add(animal);
-                        }
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                try {
+                    JSONObject json = new JSONObject(response);
+                    JSONObject data = json.getJSONObject("data");
+                    JSONArray animals = data.getJSONArray("animals");
+                    List<String> animalList = new ArrayList<String>();
+                    for (int i = 0; i < animals.length(); i++) {
+                        JSONObject animal = animals.getJSONObject(i);
+                        animales.add(animal.getString("name"));
                     }
 
-                    spAnimal.setAdapter(new ArrayAdapter<String>(ConsultaAnimalesActivity.this, android.R.layout.simple_spinner_dropdown_item, lstAnimales));
-                }catch (JSONException e){e.printStackTrace();}
+                } catch (JSONException e) {
+
+                }
             }
 
         }, new Response.ErrorListener() {

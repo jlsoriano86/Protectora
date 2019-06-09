@@ -2,12 +2,16 @@ package com.example.protectora;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,12 +24,19 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AltaAnimalesActivity extends AppCompatActivity {
@@ -34,6 +45,7 @@ public class AltaAnimalesActivity extends AppCompatActivity {
     EditText txtNombre, txtNacimiento, txtTipo;
     Spinner spEstado;
     Button btnAlta;
+    List<Estado> list;
 
     RequestQueue requestQueue;
 
@@ -53,10 +65,21 @@ public class AltaAnimalesActivity extends AppCompatActivity {
         spEstado=(Spinner)findViewById(R.id.txtEstado);
         btnAlta=(Button) findViewById(R.id.btnAlta);
 
+        list = new ArrayList<Estado>();
+
+        list.add(new Estado("Adoptado", "1"));
+        list.add(new Estado("No adoptado", "2"));
+        list.add(new Estado("Fallecido", "3"));
+
+        ArrayAdapter<Estado> dataAdapter = new ArrayAdapter<Estado>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spEstado.setAdapter(dataAdapter);
+
         btnAlta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ejecutarAlta("http://protectora-animales.ddns.net/api/animals/postAnimals.php");
+                ejecutarAlta("http://5.154.58.36/apiAndroid/api/animals/postAnimals.php");
             }
         });
 
@@ -105,33 +128,59 @@ public class AltaAnimalesActivity extends AppCompatActivity {
         imgImagen.setImageBitmap(imagen);
     }
 
+    private String imgToBase64(ImageView imgView) {
+        BitmapDrawable drawable = (BitmapDrawable) imgView.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,bos);
+        byte[] bb = bos.toByteArray();
+        int flags = Base64.NO_WRAP;
+        String image = Base64.encodeToString(bb, flags);
+        return "data:image/png;base64," + image;
+    }
+
     private void ejecutarAlta(String URL){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+        Estado st = list.get(spEstado.getSelectedItemPosition());
+        String img64 = imgToBase64(imgImagen);
+        /*Map<String,String> parametros=new HashMap<String, String>();
+        parametros.put("birth",txtNacimiento.getText().toString());
+        parametros.put("type",txtTipo.getText().toString());
+        parametros.put("name",txtNombre.getText().toString());
+        parametros.put("state_id", st.getValue());
+
+        JSONObject json = new JSONObject(img);
+        parametros.put("img", json.toString());*/
+
+        JSONObject params = new JSONObject();
+        try {
+            params.put("birth",txtNacimiento.getText().toString());
+            params.put("type",txtTipo.getText().toString());
+            params.put("name",txtNombre.getText().toString());
+            params.put("state_id", st.getValue());
+            Map<String, String> img = new HashMap<String, String>();
+            img.put("ext", "png");
+            img.put("data", img64);
+            params.put("img", new JSONObject(img));
+        } catch (JSONException error) {
+
+        }
+
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
+            public void onResponse(JSONObject response) {
                 Toast.makeText(getApplicationContext(), "Animal registrado", Toast.LENGTH_SHORT).show();
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                //Log.d("gola", error.getMessage());
                 Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
             }
         } ){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> parametros=new HashMap<String, String>();
-                parametros.put("birth",txtNacimiento.getText().toString());
-                parametros.put("animal_type",txtTipo.getText().toString());
-                parametros.put("animal_name",txtNombre.getText().toString());
-                parametros.put("state_id", spEstado.toString());
-                parametros.put("img",imgImagen.toString());
-
-                return parametros;
-            }
         };
         requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        requestQueue.add(request);
 
 
     }
