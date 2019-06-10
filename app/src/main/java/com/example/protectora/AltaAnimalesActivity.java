@@ -34,6 +34,8 @@ import org.json.JSONObject;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -174,8 +176,10 @@ public class AltaAnimalesActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //Log.d("gola", error.getMessage());
-                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
+                StringWriter sw = new StringWriter();
+                error.printStackTrace(new PrintWriter(sw));
+                //Toast.makeText(getApplicationContext(), sw.toString(), Toast.LENGTH_LONG).show();
+                Log.d("Hola", sw.toString());
             }
         } ){
         };

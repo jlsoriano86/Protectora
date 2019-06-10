@@ -3,10 +3,12 @@ package com.example.protectora;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,10 +23,15 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,7 +58,7 @@ public class IncidenciasActivity extends AppCompatActivity {
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ejecutarIncidencia("http://protectora-animales.ddns.net/api/incidencias/postIncidencias.php");
+                ejecutarIncidencia("http://5.154.58.36/apiAndroid/api/incidencias/postIncidencias.php");
             }
         });
 
@@ -98,29 +105,51 @@ public class IncidenciasActivity extends AppCompatActivity {
         ImageView imgImagen = findViewById(R.id.imgImagen);
         imgImagen.setImageBitmap(imagen);
     }
+
+    private String imgToBase64(ImageView imgView) {
+        BitmapDrawable drawable = (BitmapDrawable) imgView.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,bos);
+        byte[] bb = bos.toByteArray();
+        int flags = Base64.NO_WRAP;
+        String image = Base64.encodeToString(bb, flags);
+        return "data:image/png;base64," + image;
+    }
+
     private void ejecutarIncidencia(String URL){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+        String img64 = imgToBase64(imgImagen);
+
+
+
+
+        JSONObject params = new JSONObject();
+        try {
+            params.put("name_incidencia",txtTitulo.getText().toString());
+            params.put("description_incidencia",txtDescripcion.getText().toString());
+            Map<String, String> img = new HashMap<String, String>();
+            img.put("ext", "png");
+            img.put("data", img64);
+            params.put("image_incidencia", new JSONObject(img));
+        } catch (JSONException error) {
+
+        }
+
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), "Animal registrado", Toast.LENGTH_SHORT).show();
+            public void onResponse(JSONObject response) {
+                Toast.makeText(getApplicationContext(), "Incidencia registrada", Toast.LENGTH_SHORT).show();
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                //Log.d("prueba", error.getMessage());
                 Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
             }
         } ){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> parametros=new HashMap<String, String>();
-                parametros.put("name_incidencia",txtTitulo.getText().toString());
-                parametros.put("descripcion_incidencia",txtDescripcion.getText().toString());
-                parametros.put("img",imgImagen.toString());
-                return parametros;
-            }
         };
         requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        requestQueue.add(request);
     }
 }
