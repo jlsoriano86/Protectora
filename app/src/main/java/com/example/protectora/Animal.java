@@ -2,27 +2,13 @@ package com.example.protectora;
 
 public class Animal {
     private String name;
-    private String id;
-    private String birth;
-    private String type;
-    private String state;
-    private String img;
 
-
-    public Animal(String name, String id, String birth, String type, String state, String img) {
-        this.name = name;
-        this.id = id;
-        this.birth = birth;
-        this.type = type;
-        this.state = state;
-        this.img = img;
+    public String getName() {
+        return name;
     }
 
-
-
-    @Override
-    public String toString() {
-        return name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getId() {
@@ -63,5 +49,26 @@ public class Animal {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    private String id;
+    private String birth;
+    private String type;
+    private String state;
+    private String img;
+
+
+    public Animal(String name, String id, String birth, String type, String state, String img) {
+        this.name = name;
+        this.id = id;
+        this.birth = birth;
+        this.type = type;
+        this.state = state;
+        this.img = img;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
