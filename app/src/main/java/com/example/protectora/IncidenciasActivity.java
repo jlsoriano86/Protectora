@@ -119,18 +119,15 @@ public class IncidenciasActivity extends AppCompatActivity {
 
     private void ejecutarIncidencia(String URL){
         String img64 = imgToBase64(imgImagen);
-
-
-
-
         JSONObject params = new JSONObject();
         try {
             params.put("name_incidencia",txtTitulo.getText().toString());
             params.put("description_incidencia",txtDescripcion.getText().toString());
+            params.put("user_id", 2);
             Map<String, String> img = new HashMap<String, String>();
             img.put("ext", "png");
             img.put("data", img64);
-            params.put("image_incidencia", new JSONObject(img));
+            params.put("img", new JSONObject(img));
         } catch (JSONException error) {
 
         }

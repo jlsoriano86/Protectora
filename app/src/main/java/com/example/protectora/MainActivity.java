@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  entrarPass("http://protectora-animales.ddns.net/phpMyAdmin/api/login/consultarusuario.php?user=" + txtNombreUsuario.getText().toString());
+                entrarPass("http://5.154.58.36/apiAndroid/api/login/login.php" + txtNombreUsuario.getText().toString());
                 Intent entrar = new Intent(MainActivity.this, com.example.protectora.Principal.class);
                 startActivity(entrar);
             }
