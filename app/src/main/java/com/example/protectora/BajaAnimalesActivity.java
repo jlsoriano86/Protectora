@@ -184,6 +184,8 @@ public class BajaAnimalesActivity extends AppCompatActivity {
                 }
                 if (status.equals("success")){
                     Toast.makeText(getApplicationContext(), "Animal borrado", Toast.LENGTH_SHORT).show();
+                    finish();
+                    startActivity(getIntent());
                 } else {
                     Toast.makeText(getApplicationContext(), "Error del servidor", Toast.LENGTH_SHORT).show();
                 }

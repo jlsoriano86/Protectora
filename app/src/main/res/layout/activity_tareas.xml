@@ -9,6 +9,18 @@
     android:background="@drawable/fondoapp"
     tools:context=".TareasActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CONSULTA DE TAREAS"
+        android:textAlignment="center"
+        android:textColor="#F10707"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        android:background="#ddffffff"/>
+
 
     <LinearLayout
         android:background="#ddffffff"

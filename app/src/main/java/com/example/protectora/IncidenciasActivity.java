@@ -133,6 +133,8 @@ public class IncidenciasActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Toast.makeText(getApplicationContext(), "Incidencia registrada", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(getIntent());
 
             }
         }, new Response.ErrorListener() {

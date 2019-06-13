@@ -9,6 +9,17 @@
     tools:context=".IncidenciasActivity"
     android:padding="10dp">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ENVIAR INCIDENCIA"
+        android:textAlignment="center"
+        android:textColor="#F10707"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:background="#ddffffff"/>
+
     <LinearLayout
     android:background="#ddffffff"
     android:layout_width="match_parent"
@@ -29,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Introduzca el título"
+            android:hint="Introduzca título incidencia"
             android:inputType="textPersonName"
             android:textAlignment="center" />
 

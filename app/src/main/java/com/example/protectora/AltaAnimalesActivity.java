@@ -161,6 +161,8 @@ public class AltaAnimalesActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Toast.makeText(getApplicationContext(), "Animal registrado", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(getIntent());
 
             }
         }, new Response.ErrorListener() {

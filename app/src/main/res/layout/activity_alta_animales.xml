@@ -10,6 +10,16 @@
     android:padding="16dp"
     tools:context=".AltaAnimalesActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ALTA DE ANIMALES"
+        android:textAlignment="center"
+        android:textColor="#F10707"
+        android:textSize="24sp"
+        android:background="#ddffffff"/>
+
     <RadioGroup
         android:background="#ddffffff"
         android:id="@+id/radOrigen"
@@ -41,7 +51,7 @@
     <FrameLayout
 
         android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_height="270dp"
         android:layout_gravity="center"
         android:padding="16dp">
 

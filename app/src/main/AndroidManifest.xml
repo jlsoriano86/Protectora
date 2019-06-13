@@ -11,15 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BajaAnimalesActivity"></activity>
-        <activity android:name=".IncidenciasActivity" />
-        <activity android:name=".ModificaAnimalesActivity" />
-        <activity android:name=".ConsultaAnimalesActivity" />
-        <activity android:name=".AltaAnimalesActivity" />
-        <activity android:name=".AnimalesActivity" />
-        <activity android:name=".TareasActivity" />
-        <activity android:name=".Principal" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".BajaAnimalesActivity"  android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".IncidenciasActivity"  android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ModificaAnimalesActivity"  android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ConsultaAnimalesActivity"  android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AltaAnimalesActivity"  android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AnimalesActivity"  android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".TareasActivity"  android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Principal"  android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity"  android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

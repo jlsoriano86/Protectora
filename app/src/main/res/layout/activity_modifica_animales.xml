@@ -9,6 +9,17 @@
     android:background="@drawable/fondoapp"
     tools:context=".ModificaAnimalesActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MODIFICACIÓN DE ANIMALES"
+        android:textAlignment="center"
+        android:textColor="#F10707"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        android:background="#ddffffff"/>
     <RadioGroup
         android:background="#ddffffff"
         android:id="@+id/radOrigen"
@@ -64,8 +75,8 @@
     </LinearLayout>
 
     <FrameLayout
-        android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_width="170dp"
+        android:layout_height="230dp"
         android:layout_gravity="center"
         android:padding="16dp">
 

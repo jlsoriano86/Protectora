@@ -9,6 +9,16 @@
     android:background="@drawable/fondoapp"
     tools:context=".AnimalesActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ANIMALES"
+        android:textAlignment="center"
+        android:textColor="#F10707"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:background="#ddffffff"/>
     <Button
         android:id="@+id/btnAltaAnimales"
         style="@style/buttonApp"
