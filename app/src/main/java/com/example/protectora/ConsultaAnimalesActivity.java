@@ -35,14 +35,11 @@ import java.util.List;
 public class ConsultaAnimalesActivity extends AppCompatActivity {
     Spinner spAnimal;
     String URL="http://5.154.58.36/apiAndroid/api/animals/getAnimals.php/";
-
     ImageView imgImagen;
     TextView txtId, txtNacimiento, txtTipo, txtEstado;
     RequestQueue requestQueue;
     List<Animal> animales = new ArrayList<Animal>();
     ArrayAdapter<Animal> dataAdapter;
-
-
 
 
     @Override
@@ -51,7 +48,6 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_consulta_animales);
         // buscarAnimal();
         spAnimal = (Spinner) findViewById(R.id.spAnimal);
-
         imgImagen = (ImageView) findViewById(R.id.imgImagen);
         txtId = (TextView) findViewById(R.id.txtNombre);
         txtNacimiento = (TextView) findViewById(R.id.txtNacimiento);
@@ -66,7 +62,6 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
         spAnimal.setAdapter(dataAdapter);
 
         spAnimal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("hola", "buenas colega");

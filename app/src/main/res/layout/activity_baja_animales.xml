@@ -28,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@android:color/black"/>
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
@@ -65,8 +66,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:textColor="@android:color/black"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/black" />
 
 
     </LinearLayout>
@@ -91,8 +93,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:textColor="@android:color/black"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/black" />
 
 
     </LinearLayout>
@@ -115,8 +118,9 @@
             android:id="@+id/txtTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
@@ -138,8 +142,9 @@
             android:id="@+id/spEstado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 
@@ -152,6 +157,7 @@
 
         <Button
             android:id="@+id/btnBaja"
+            style="@style/buttonApp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

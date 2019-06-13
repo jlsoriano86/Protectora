@@ -13,7 +13,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -22,8 +33,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TareasActivity extends AppCompatActivity {
-    String URL="http://5.154.58.36/apiAndroid/api/tareas/getTareas.php/";
     Spinner spTarea;
+    String URL="http://5.154.58.36/apiAndroid/api/tareas/getTareas.php/";
+
     TextView txtIdTarea, txtDescripcionTarea;
     RequestQueue requestQueue;
     List<Tarea> tareas = new ArrayList<Tarea>();
@@ -50,25 +62,9 @@ public class TareasActivity extends AppCompatActivity {
                 Tarea tarea = (Tarea) spTarea.getItemAtPosition(i);
 
                 // Toast.makeText(getApplicationContext(),animal,Toast.LENGTH_LONG).show();
-               txtIdTarea.setText(tarea.getIdTarea());
-              // txtNombreTarea.setText(tarea.getNombreTarea());
-               txtDescripcionTarea.setText(tarea.getDescripcionTarea());
-
-                java.net.URL url = null;
-                try {
-                    url = new URL("http://5.154.58.36/apiAndroid/img/");
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-                Bitmap bmp = null;
-                if (url != null) {
-                    try {
-                        bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    //imgImagen.setImageBitmap(bmp);
-                }
+               txtIdTarea.setText(tarea.getId());
+               //txtNombreTarea.setText(tarea.getNombreTarea());
+               txtDescripcionTarea.setText(tarea.getDescription());
 
             }
             @Override
@@ -78,16 +74,48 @@ public class TareasActivity extends AppCompatActivity {
             }
 
         });
-
-        //buscarAnimal();
-
-
+        buscarTarea();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    private void buscarTarea() {
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                try {
+                    JSONObject json = new JSONObject(response);
+                    JSONObject data = json.getJSONObject("data");
+                    JSONArray tasks = data.getJSONArray("tasks");
+                    List<String> tareaList = new ArrayList<String>();
+                    for (int i = 0; i < tasks.length(); i++) {
+                        JSONObject tarea = tasks.getJSONObject(i);
+                        tareas.add(new Tarea(
+                                tarea.getString("nameTask"),
+                                tarea.getString("id"),
+                                tarea.getString("descriptionTask")
+                        ));
+                    }
+                    dataAdapter.addAll(tareas);
 
+
+                } catch (JSONException e) {
+
+                }
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+
+        });
+
+        int socketTimeout = 30000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        requestQueue.add(stringRequest);
 
     }
 }

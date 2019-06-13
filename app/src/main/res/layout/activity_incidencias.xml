@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fondoapp"
-    tools:context=".IncidenciasActivity">
+    tools:context=".IncidenciasActivity"
+    android:padding="10dp">
 
     <LinearLayout
     android:background="#ddffffff"
@@ -29,7 +30,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Introduzca el título"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textAlignment="center" />
 
 
 </LinearLayout>
@@ -64,7 +66,8 @@
             android:ems="10"
             android:gravity="start|top"
             android:hint="Introduzca descripción de la incidencia"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:textAlignment="center" />
     </LinearLayout>
 
     <RadioGroup
@@ -89,6 +92,7 @@
     </RadioGroup>
 
     <Button
+        style="@style/buttonApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="clicObtener"
@@ -109,6 +113,7 @@
 
     <Button
         android:id="@+id/btnEnviar"
+        style="@style/buttonApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ENVIAR" />

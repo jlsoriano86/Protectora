@@ -1,63 +1,42 @@
 package com.example.protectora;
 
 public class Tarea {
-    private String idTarea;
-    private String nombreTarea;
-    private String descripcionTarea;
+    private String name;
 
-
-
-
-    public Tarea() {
-        this.idTarea = null;
-        this.nombreTarea = "";
-        this.descripcionTarea = "";
+    public String getName() {
+        return name;
     }
 
-    public Tarea(String nombreTarea, String descripcionTarea) {
-        this.idTarea = null;
-        this.nombreTarea = nombreTarea;
-        this.descripcionTarea = descripcionTarea;
-
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Tarea(String idTarea, String nombreTarea, String descripcionTarea) {
-        this.idTarea = idTarea;
-        this.nombreTarea = nombreTarea;
-        this.descripcionTarea = descripcionTarea;
-
+    public String getId() {
+        return id;
     }
 
-    public String getIdTarea() {
-        return idTarea;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setIdTarea(String id) {
-        this.idTarea = idTarea;
+    public String getDescription() {
+        return description;
     }
 
-    public String getNombreTarea() {
-        return nombreTarea;
+    private String id;
+    private String description;
+
+
+
+    public Tarea(String name, String id, String description) {
+        this.name = name;
+        this.id = id;
+        this.description = description;
+
     }
-
-    public void setNombreTarea(String nombreTarea) { this.nombreTarea = nombreTarea; }
-
-    public String getDescripcionTarea() {
-        return descripcionTarea;
-    }
-
-    public void setDescripcionTarea(String descripcionTarea) { this.descripcionTarea = descripcionTarea; }
-
-
-
-
 
     @Override
     public String toString() {
-        return "Tarea {" +
-                "idTarea=" + idTarea +
-                ", nombreTarea='" + nombreTarea + '\'' +
-                ", descripcionTarea='" + descripcionTarea + '\'' +
-                '}';
+        return name;
     }
 }
