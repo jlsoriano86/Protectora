@@ -51,11 +51,12 @@ public class TareasActivity extends AppCompatActivity {
 
                 // Toast.makeText(getApplicationContext(),animal,Toast.LENGTH_LONG).show();
                txtIdTarea.setText(tarea.getIdTarea());
+              // txtNombreTarea.setText(tarea.getNombreTarea());
                txtDescripcionTarea.setText(tarea.getDescripcionTarea());
 
                 java.net.URL url = null;
                 try {
-                    url = new URL("http://5.154.58.36/apiAndroid/img/"+animal.getImg());
+                    url = new URL("http://5.154.58.36/apiAndroid/img/");
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -66,7 +67,7 @@ public class TareasActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    imgImagen.setImageBitmap(bmp);
+                    //imgImagen.setImageBitmap(bmp);
                 }
 
             }
@@ -78,7 +79,7 @@ public class TareasActivity extends AppCompatActivity {
 
         });
 
-        buscarAnimal();
+        //buscarAnimal();
 
 
     }

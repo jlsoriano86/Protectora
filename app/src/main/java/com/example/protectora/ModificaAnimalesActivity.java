@@ -255,6 +255,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
 
         JSONObject params = new JSONObject();
         try {
+            params.put("id", txtId.getText().toString());
             params.put("birth",txtNacimiento.getText().toString());
             params.put("type",txtTipo.getText().toString());
             params.put("name",txtNombre.getText().toString());
@@ -267,7 +268,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
 
         }
 
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.PUT, URL, params, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Toast.makeText(getApplicationContext(), "Animal modificado", Toast.LENGTH_SHORT).show();

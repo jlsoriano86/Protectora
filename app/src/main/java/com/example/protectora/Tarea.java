@@ -1,7 +1,7 @@
 package com.example.protectora;
 
 public class Tarea {
-    private Long idTarea;
+    private String idTarea;
     private String nombreTarea;
     private String descripcionTarea;
 
@@ -21,18 +21,18 @@ public class Tarea {
 
     }
 
-    public Tarea(Long idTarea, String nombreTarea, String descripcionTarea) {
+    public Tarea(String idTarea, String nombreTarea, String descripcionTarea) {
         this.idTarea = idTarea;
         this.nombreTarea = nombreTarea;
         this.descripcionTarea = descripcionTarea;
 
     }
 
-    public Long getIdTarea() {
+    public String getIdTarea() {
         return idTarea;
     }
 
-    public void setIdTarea(Long id) {
+    public void setIdTarea(String id) {
         this.idTarea = idTarea;
     }
 
