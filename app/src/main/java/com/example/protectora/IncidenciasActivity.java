@@ -15,16 +15,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -51,7 +48,7 @@ public class IncidenciasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_incidencias);
 
         imgImagen=(ImageView) findViewById(R.id.imgImagen);
-        txtTitulo=(EditText)findViewById(R.id.txtTitulo);
+        txtTitulo=(EditText)findViewById(R.id.txtNombre);
         txtDescripcion=(EditText)findViewById(R.id.txtDescripcion);
         btnEnviar=(Button) findViewById(R.id.btnEnviar);
 
@@ -123,7 +120,7 @@ public class IncidenciasActivity extends AppCompatActivity {
         try {
             params.put("name_incidencia",txtTitulo.getText().toString());
             params.put("description_incidencia",txtDescripcion.getText().toString());
-            params.put("user_id", 2);
+            params.put("user_id", "2");
             Map<String, String> img = new HashMap<String, String>();
             img.put("ext", "png");
             img.put("data", img64);

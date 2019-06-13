@@ -4,8 +4,7 @@ public class Tarea {
     private Long idTarea;
     private String nombreTarea;
     private String descripcionTarea;
-    private Integer fechaInicio;
-    private Integer fechaFin;
+
 
 
 
@@ -13,25 +12,20 @@ public class Tarea {
         this.idTarea = null;
         this.nombreTarea = "";
         this.descripcionTarea = "";
-        this.fechaInicio = 0;
-        this.fechaFin = 0;
-
     }
 
-    public Tarea(String nombreTarea, String descripcionTarea, Integer fechaInicio, Integer fechaFin) {
+    public Tarea(String nombreTarea, String descripcionTarea) {
         this.idTarea = null;
         this.nombreTarea = nombreTarea;
         this.descripcionTarea = descripcionTarea;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+
     }
 
-    public Tarea(Long idTarea, String nombreTarea, String descripcionTarea, Integer fechaInicio, Integer fechaFin) {
+    public Tarea(Long idTarea, String nombreTarea, String descripcionTarea) {
         this.idTarea = idTarea;
         this.nombreTarea = nombreTarea;
         this.descripcionTarea = descripcionTarea;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+
     }
 
     public Long getIdTarea() {
@@ -54,21 +48,7 @@ public class Tarea {
 
     public void setDescripcionTarea(String descripcionTarea) { this.descripcionTarea = descripcionTarea; }
 
-    public Integer getFechaInicio() {
-        return fechaInicio;
-    }
 
-    public void setFechaInicio(Integer fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public Integer getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(Integer fechaFin) {
-        this.fechaFin = fechaFin;
-    }
 
 
 
@@ -78,8 +58,6 @@ public class Tarea {
                 "idTarea=" + idTarea +
                 ", nombreTarea='" + nombreTarea + '\'' +
                 ", descripcionTarea='" + descripcionTarea + '\'' +
-                ", fechaInicio=" + fechaInicio +
-                ", fechaFin=" + fechaFin + '\'' +
                 '}';
     }
 }

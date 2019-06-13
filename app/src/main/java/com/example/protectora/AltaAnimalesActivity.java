@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,13 +18,11 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -61,10 +58,10 @@ public class AltaAnimalesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alta_animales);
 
         imgImagen=(ImageView) findViewById(R.id.imgImagen);
-        txtNombre=(EditText)findViewById(R.id.txtTitulo);
+        txtNombre=(EditText)findViewById(R.id.txtNombre);
         txtNacimiento=(EditText)findViewById(R.id.txtNacimiento);
         txtTipo=(EditText)findViewById(R.id.txtTipo);
-        spEstado=(Spinner)findViewById(R.id.txtEstado);
+        spEstado=(Spinner)findViewById(R.id.spEstado);
         btnAlta=(Button) findViewById(R.id.btnAlta);
 
         list = new ArrayList<Estado>();
@@ -144,14 +141,7 @@ public class AltaAnimalesActivity extends AppCompatActivity {
     private void ejecutarAlta(String URL){
         Estado st = list.get(spEstado.getSelectedItemPosition());
         String img64 = imgToBase64(imgImagen);
-        /*Map<String,String> parametros=new HashMap<String, String>();
-        parametros.put("birth",txtNacimiento.getText().toString());
-        parametros.put("type",txtTipo.getText().toString());
-        parametros.put("name",txtNombre.getText().toString());
-        parametros.put("state_id", st.getValue());
 
-        JSONObject json = new JSONObject(img);
-        parametros.put("img", json.toString());*/
 
         JSONObject params = new JSONObject();
         try {

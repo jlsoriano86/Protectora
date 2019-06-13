@@ -60,7 +60,7 @@
             android:textColor="@android:color/black" />
 
         <TextView
-            android:id="@+id/txtTitulo"
+            android:id="@+id/txtNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -112,7 +112,7 @@
             android:text="Tipo de animal" />
 
         <TextView
-            android:id="@+id/spTipo"
+            android:id="@+id/txtTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
@@ -135,7 +135,7 @@
             android:text="Estado:" />
 
         <TextView
-            android:id="@+id/txtEstado"
+            android:id="@+id/spEstado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"

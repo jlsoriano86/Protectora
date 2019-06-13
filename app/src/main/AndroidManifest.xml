@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".IncidenciasActivity"></activity>
+        <activity android:name=".BajaAnimalesActivity"></activity>
+        <activity android:name=".IncidenciasActivity" />
         <activity android:name=".ModificaAnimalesActivity" />
-        <activity android:name=".BajaAnimalesActivity" />
         <activity android:name=".ConsultaAnimalesActivity" />
         <activity android:name=".AltaAnimalesActivity" />
         <activity android:name=".AnimalesActivity" />

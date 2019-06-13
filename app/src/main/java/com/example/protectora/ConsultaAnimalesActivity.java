@@ -1,5 +1,6 @@
 package com.example.protectora;
-
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.android.volley.DefaultRetryPolicy;
@@ -25,8 +25,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ConsultaAnimalesActivity extends AppCompatActivity {
     Spinner spAnimal;
@@ -36,6 +40,7 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
     TextView txtId, txtNacimiento, txtTipo, txtEstado;
     RequestQueue requestQueue;
     List<Animal> animales = new ArrayList<Animal>();
+    ArrayAdapter<Animal> dataAdapter;
 
 
 
@@ -44,18 +49,22 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta_animales);
+        // buscarAnimal();
         spAnimal = (Spinner) findViewById(R.id.spAnimal);
 
         imgImagen = (ImageView) findViewById(R.id.imgImagen);
-        txtId = (TextView) findViewById(R.id.txtTitulo);
+        txtId = (TextView) findViewById(R.id.txtNombre);
         txtNacimiento = (TextView) findViewById(R.id.txtNacimiento);
         txtTipo = (TextView) findViewById(R.id.txtTipo);
-        txtEstado = (TextView) findViewById(R.id.txtEstado);
-        ArrayAdapter<Animal> dataAdapter = new ArrayAdapter<Animal>(this,
-                android.R.layout.simple_spinner_item, animales);
+        txtEstado = (TextView) findViewById(R.id.spEstado);
+
+        Log.d("hola", "jklkjlk");
+        dataAdapter = new ArrayAdapter<Animal>(this,
+                android.R.layout.simple_spinner_item, new ArrayList<Animal>());
+
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spAnimal.setAdapter(dataAdapter);
-        Log.d("hola", "jklkjlk");
+
         spAnimal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -63,11 +72,26 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
                 Log.d("hola", "buenas colega");
                 Animal animal = (Animal)spAnimal.getItemAtPosition(i);
 
-               // Toast.makeText(getApplicationContext(),animal,Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(),animal,Toast.LENGTH_LONG).show();
                 txtId.setText(animal.getId());
                 txtEstado.setText((animal.getState()));
                 txtNacimiento.setText(animal.getBirth());
                 txtTipo.setText(animal.getType());
+                java.net.URL url = null;
+                try {
+                    url = new URL("http://5.154.58.36/apiAndroid/img/"+animal.getImg());
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                Bitmap bmp = null;
+                if (url != null) {
+                    try {
+                        bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    imgImagen.setImageBitmap(bmp);
+                }
 
             }
             @Override
@@ -77,6 +101,7 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
             }
 
         });
+
         buscarAnimal();
     }
 
@@ -104,6 +129,8 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
                                 animal.getString("img")
                         ));
                     }
+                    dataAdapter.addAll(animales);
+
 
                 } catch (JSONException e) {
 
@@ -125,4 +152,3 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
 
     }
 }
-
