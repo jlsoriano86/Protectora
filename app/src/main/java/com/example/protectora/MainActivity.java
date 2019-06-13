@@ -39,54 +39,11 @@ public class MainActivity extends AppCompatActivity {
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                entrarPass("http://5.154.58.36/apiAndroid/api/login/login.php" + txtNombreUsuario.getText().toString());
+                Toast.makeText(getApplicationContext(),"Conexión correcta",Toast.LENGTH_SHORT).show();
                 Intent entrar = new Intent(MainActivity.this, com.example.protectora.Principal.class);
                 startActivity(entrar);
             }
         });
     }
-    private void entrarPass(String URL) {
-
-        Log.i("url",""+URL);
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest stringRequest =  new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-                    ja = new JSONArray(response);
-                    String contra = ja.getString(0);
-                    if(contra.equals(txtContrasenaUsuario.getText().toString())){
-
-                        Toast.makeText(getApplicationContext(),"Conexión correcta",Toast.LENGTH_SHORT).show();
-                        Intent entrar = new Intent(MainActivity.this, com.example.protectora.Principal.class);
-                        startActivity(entrar);
-
-                    }else{
-                        Toast.makeText(getApplicationContext(),"Contraseña incorrecta",Toast.LENGTH_SHORT).show();
-
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-
-                    Toast.makeText(getApplicationContext(),"Nombre de usuario incorrecto",Toast.LENGTH_LONG).show();
-                }
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        queue.add(stringRequest);
-
-
-    }
-
 
 }

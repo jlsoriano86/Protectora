@@ -159,6 +159,19 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:background="#ddffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="*Estados: -1 = Adoptado -2 = No Adoptado -3 = Fallecido"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
