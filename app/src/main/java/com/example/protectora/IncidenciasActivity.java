@@ -38,7 +38,6 @@ public class IncidenciasActivity extends AppCompatActivity {
     EditText txtTitulo, txtDescripcion;
     Button btnEnviar;
     RequestQueue requestQueue;
-    // Constantes para identificar la procedencia de la acción solicitada:
     private static int DESDE_CAMARA = 1;
     private static int DESDE_GALERIA = 2;
 
@@ -79,8 +78,6 @@ public class IncidenciasActivity extends AppCompatActivity {
 
     }
 
-    // Método que se ejecuta cuando concluye el intent en el que se pide por una imagen
-    // ya sea desde la cámara como desde la galería
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -96,7 +93,6 @@ public class IncidenciasActivity extends AppCompatActivity {
                 imagen = BitmapFactory.decodeStream(new BufferedInputStream(getContentResolver().openInputStream(rutaImagen)));
             } catch (FileNotFoundException e) {
             }
-            Log.i("MyApp", rutaImagen.getPath());
         }
 
         ImageView imgImagen = findViewById(R.id.imgImagen);
@@ -140,7 +136,6 @@ public class IncidenciasActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //Log.d("prueba", error.getMessage());
                 Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
             }
         } ){

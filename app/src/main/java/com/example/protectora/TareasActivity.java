@@ -58,18 +58,13 @@ public class TareasActivity extends AppCompatActivity {
         spTarea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("hola", "buenas colega");
                 Tarea tarea = (Tarea) spTarea.getItemAtPosition(i);
-
-                // Toast.makeText(getApplicationContext(),animal,Toast.LENGTH_LONG).show();
                txtIdTarea.setText(tarea.getId());
-               //txtNombreTarea.setText(tarea.getNombreTarea());
                txtDescripcionTarea.setText(tarea.getDescription());
 
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                Log.d("hola", "na");
                 // No hacer nada
             }
 
@@ -82,7 +77,7 @@ public class TareasActivity extends AppCompatActivity {
         StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+
                 try {
                     JSONObject json = new JSONObject(response);
                     JSONObject data = json.getJSONObject("data");

@@ -47,15 +47,12 @@ public class BajaAnimalesActivity extends AppCompatActivity {
     ArrayAdapter<Animal> dataAdapter;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_baja_animales);
-        // buscarAnimal();
-        spAnimal = (Spinner) findViewById(R.id.spAnimal);
 
+        spAnimal = (Spinner) findViewById(R.id.spAnimal);
         imgImagen = (ImageView) findViewById(R.id.imgImagen);
         txtId = (TextView) findViewById(R.id.txtNombre);
         txtNacimiento = (TextView) findViewById(R.id.txtNacimiento);
@@ -63,7 +60,7 @@ public class BajaAnimalesActivity extends AppCompatActivity {
         txtEstado = (TextView) findViewById(R.id.spEstado);
         btnBaja = (Button) findViewById(R.id.btnBaja);
 
-        Log.d("hola", "jklkjlk");
+
         dataAdapter = new ArrayAdapter<Animal>(this,
                 android.R.layout.simple_spinner_item, new ArrayList<Animal>());
 
@@ -74,10 +71,8 @@ public class BajaAnimalesActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("hola", "buenas colega");
                 Animal animal = (Animal) spAnimal.getItemAtPosition(i);
 
-                // Toast.makeText(getApplicationContext(),animal,Toast.LENGTH_LONG).show();
                 txtId.setText(animal.getId());
                 txtEstado.setText((animal.getState_desc()));
                 txtNacimiento.setText(animal.getBirth());
@@ -102,7 +97,6 @@ public class BajaAnimalesActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                Log.d("hola", "na");
                 // No hacer nada
             }
 
@@ -125,7 +119,6 @@ public class BajaAnimalesActivity extends AppCompatActivity {
         StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                 try {
                     JSONObject json = new JSONObject(response);
                     JSONObject data = json.getJSONObject("data");
@@ -197,8 +190,7 @@ public class BajaAnimalesActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 StringWriter sw = new StringWriter();
                 error.printStackTrace(new PrintWriter(sw));
-                //Toast.makeText(getApplicationContext(), sw.toString(), Toast.LENGTH_LONG).show();
-                Log.d("Hola", sw.toString());
+
             }
         } ){
         };

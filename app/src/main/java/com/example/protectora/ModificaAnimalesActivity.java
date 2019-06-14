@@ -58,15 +58,11 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
     List<Estado> list;
     RequestQueue requestQueue;
 
-    // Constantes para identificar la procedencia de la acción solicitada:
     private static int DESDE_CAMARA = 1;
     private static int DESDE_GALERIA = 2;
 
     List<Animal> animales = new ArrayList<Animal>();
     ArrayAdapter<Animal> dataAdapter2;
-
-
-
 
 
     @Override
@@ -96,7 +92,6 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spEstado.setAdapter(dataAdapter);
 
-        Log.d("hola", "jklkjlk");
         dataAdapter2 = new ArrayAdapter<Animal>(this,
                 android.R.layout.simple_spinner_item, new ArrayList<Animal>());
 
@@ -107,12 +102,8 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("hola", "buenas colega");
                 Animal animal = (Animal)spAnimal.getItemAtPosition(i);
-
-                // Toast.makeText(getApplicationContext(),animal,Toast.LENGTH_LONG).show();
                 txtId.setText(animal.getId());
-                //spEstado.getSelectedItemId((animal.getState()));
                 txtNombre.setText(animal.getName());
                 txtNacimiento.setText(animal.getBirth());
                 txtTipo.setText(animal.getType());
@@ -142,7 +133,6 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                Log.d("hola", "na");
                 // No hacer nada
             }
 
@@ -175,8 +165,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
         startActivityForResult(intent, requestCode);
 
     }
-    // Método que se ejecuta cuando concluye el intent en el que se pide por una imagen
-    // ya sea desde la cámara como desde la galería
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -192,7 +181,6 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
                 imagen = BitmapFactory.decodeStream(new BufferedInputStream(getContentResolver().openInputStream(rutaImagen)));
             } catch (FileNotFoundException e) {
             }
-            Log.i("MyApp", rutaImagen.getPath());
         }
 
         ImageView imgImagen = findViewById(R.id.imgImagen);
@@ -217,7 +205,6 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
         StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                 try {
                     JSONObject json = new JSONObject(response);
                     JSONObject data = json.getJSONObject("data");
@@ -290,8 +277,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 StringWriter sw = new StringWriter();
                 error.printStackTrace(new PrintWriter(sw));
-                //Toast.makeText(getApplicationContext(), sw.toString(), Toast.LENGTH_LONG).show();
-                Log.d("Hola", sw.toString());
+                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
             }
         } ){
         };

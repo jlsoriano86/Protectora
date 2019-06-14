@@ -48,7 +48,6 @@ public class AltaAnimalesActivity extends AppCompatActivity {
 
     RequestQueue requestQueue;
 
-    // Constantes para identificar la procedencia de la acción solicitada:
     private static int DESDE_CAMARA = 1;
     private static int DESDE_GALERIA = 2;
 
@@ -63,7 +62,6 @@ public class AltaAnimalesActivity extends AppCompatActivity {
         txtTipo=(EditText)findViewById(R.id.txtTipo);
         spEstado=(Spinner)findViewById(R.id.spEstado);
         btnAlta=(Button) findViewById(R.id.btnAlta);
-
         list = new ArrayList<Estado>();
 
         list.add(new Estado("Adoptado", "1"));
@@ -103,8 +101,6 @@ public class AltaAnimalesActivity extends AppCompatActivity {
 
     }
 
-    // Método que se ejecuta cuando concluye el intent en el que se pide por una imagen
-    // ya sea desde la cámara como desde la galería
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -120,7 +116,6 @@ public class AltaAnimalesActivity extends AppCompatActivity {
                 imagen = BitmapFactory.decodeStream(new BufferedInputStream(getContentResolver().openInputStream(rutaImagen)));
             } catch (FileNotFoundException e) {
             }
-            Log.i("MyApp", rutaImagen.getPath());
         }
 
         ImageView imgImagen = findViewById(R.id.imgImagen);
@@ -170,14 +165,12 @@ public class AltaAnimalesActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 StringWriter sw = new StringWriter();
                 error.printStackTrace(new PrintWriter(sw));
-                //Toast.makeText(getApplicationContext(), sw.toString(), Toast.LENGTH_LONG).show();
-                Log.d("Hola", sw.toString());
+                Toast.makeText(getApplicationContext(), sw.toString(), Toast.LENGTH_LONG).show();
             }
         } ){
         };
         requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(request);
-
 
     }
 }
