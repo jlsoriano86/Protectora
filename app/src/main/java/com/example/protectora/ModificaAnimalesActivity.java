@@ -112,9 +112,11 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
 
                 // Toast.makeText(getApplicationContext(),animal,Toast.LENGTH_LONG).show();
                 txtId.setText(animal.getId());
-                // spEstado.getSelectedItemId((animal.getState()));
+                //spEstado.getSelectedItemId((animal.getState()));
+                txtNombre.setText(animal.getName());
                 txtNacimiento.setText(animal.getBirth());
                 txtTipo.setText(animal.getType());
+                Estado st = list.get(spEstado.getSelectedItemPosition());
                 java.net.URL url = null;
                 try {
                     url = new URL("http://5.154.58.36/apiAndroid/img/"+animal.getImg());
@@ -129,6 +131,12 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     imgImagen.setImageBitmap(bmp);
+                }
+                for (int j = 0; j < list.size(); j++) {
+                    if (list.get(j).getValue().equals(animal.getState())) {
+                        spEstado.setSelection(j);
+                        break;
+                    }
                 }
 
             }
@@ -223,6 +231,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
                                 animal.getString("birthDate"),
                                 animal.getString("type"),
                                 animal.getString("state"),
+                                animal.getString("state_desc"),
                                 animal.getString("img")
                         ));
                     }

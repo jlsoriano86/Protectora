@@ -69,7 +69,7 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
 
                 // Toast.makeText(getApplicationContext(),animal,Toast.LENGTH_LONG).show();
                 txtId.setText(animal.getId());
-                txtEstado.setText((animal.getState()));
+                txtEstado.setText((animal.getState_desc()));
                 txtNacimiento.setText(animal.getBirth());
                 txtTipo.setText(animal.getType());
                 java.net.URL url = null;
@@ -121,6 +121,7 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
                                 animal.getString("birthDate"),
                                 animal.getString("type"),
                                 animal.getString("state"),
+                                animal.getString("state_desc"),
                                 animal.getString("img")
                         ));
                     }

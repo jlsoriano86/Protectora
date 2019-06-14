@@ -42,6 +42,13 @@ public class Animal {
     public void setState(String state) {
         this.state = state;
     }
+    public String getState_desc() {
+        return state_desc;
+    }
+
+    public void setState_desc(String state_desc) {
+        this.state_desc = state_desc;
+    }
 
     public String getImg() {
         return img;
@@ -55,15 +62,17 @@ public class Animal {
     private String birth;
     private String type;
     private String state;
+    private String state_desc;
     private String img;
 
 
-    public Animal(String name, String id, String birth, String type, String state, String img) {
+    public Animal(String name, String id, String birth, String type, String state, String state_desc, String img) {
         this.name = name;
         this.id = id;
         this.birth = birth;
         this.type = type;
         this.state = state;
+        this.state_desc = state_desc;
         this.img = img;
     }
 
