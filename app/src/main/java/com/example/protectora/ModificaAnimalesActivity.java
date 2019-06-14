@@ -135,7 +135,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
                 for (int j = 0; j < list.size(); j++) {
                     if (list.get(j).getValue().equals(animal.getState())) {
                         spEstado.setSelection(j);
-                        break;
+                        return;
                     }
                 }
 
