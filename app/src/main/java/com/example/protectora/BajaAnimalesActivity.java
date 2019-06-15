@@ -35,9 +35,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+//En esta clase doy de baja a animales en la base de datos haciendo uso de mi web service
 public class BajaAnimalesActivity extends AppCompatActivity {
     Spinner spAnimal;
     Button btnBaja;
+    //URL donde está alojado el código PHP para consultar los animales almacenados en la base de datos
     String URL="http://5.154.58.36/apiAndroid/api/animals/getAnimals.php/";
 
     ImageView imgImagen;
@@ -46,7 +48,7 @@ public class BajaAnimalesActivity extends AppCompatActivity {
     List<Animal> animales = new ArrayList<Animal>();
     ArrayAdapter<Animal> dataAdapter;
 
-
+    //Al iniciar el activity, consultamos los animales de la base de datos
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +74,6 @@ public class BajaAnimalesActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Animal animal = (Animal) spAnimal.getItemAtPosition(i);
-
                 txtId.setText(animal.getId());
                 txtEstado.setText((animal.getState_desc()));
                 txtNacimiento.setText(animal.getBirth());
@@ -101,19 +102,20 @@ public class BajaAnimalesActivity extends AppCompatActivity {
             }
 
         });
-
-
           buscarAnimal();
+        //Al pulsar el btnBaja, hacemos uso de la api para dar de baja al animal
                btnBaja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //URL donde está alojado el código PHP para dar de baja a animales
                 ejecutarBaja("http://5.154.58.36/apiAndroid/api/animals/deleteAnimalById.php");
             }
         });
     }
 
-
-
+    /*Método para consultar los animales de la base de datos seleccionándolos desde el spinner
+    Tratamos los datos como un objeto JSON y hacemos uso de la librería volley
+     */
     private void buscarAnimal() {
         RequestQueue requestQueue=Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
@@ -158,7 +160,7 @@ public class BajaAnimalesActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
-
+    //Este método nos permite eliminar al animal seleccionado de la base de datos
     private void ejecutarBaja(String URL){
         JSONObject params = new JSONObject();
         try {
@@ -166,7 +168,7 @@ public class BajaAnimalesActivity extends AppCompatActivity {
         } catch (JSONException error) {
 
         }
-
+        //Por medio de una Request y nuestros datos en formato JSON, ejecutamos la baja a través de la API
         JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -177,10 +179,13 @@ public class BajaAnimalesActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if (status.equals("success")){
+                    //Si la baja se ha llevado a cabo correctamente, aparecerá este mensaje Toast
                     Toast.makeText(getApplicationContext(), "Animal borrado", Toast.LENGTH_SHORT).show();
+                    //Tras la baja, reinicio la activity
                     finish();
                     startActivity(getIntent());
                 } else {
+                    //Si ha habido algún error en la baja, aparecerá este mensaje Toast
                     Toast.makeText(getApplicationContext(), "Error del servidor", Toast.LENGTH_SHORT).show();
                 }
 
@@ -194,6 +199,7 @@ public class BajaAnimalesActivity extends AppCompatActivity {
             }
         } ){
         };
+        //Hacemos uso de la librería Volley para ejecutar nuestra request
         requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(request);
 

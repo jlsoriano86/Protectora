@@ -32,8 +32,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//En esta clase consulto las tareas almacenadas en la base de datos haciendo uso de mi web service
 public class TareasActivity extends AppCompatActivity {
     Spinner spTarea;
+    //URL donde está alojado el código PHP para consultar las tareas almacenadas en la base de datos
     String URL="http://5.154.58.36/apiAndroid/api/tareas/getTareas.php/";
 
     TextView txtIdTarea, txtDescripcionTarea;
@@ -41,7 +44,7 @@ public class TareasActivity extends AppCompatActivity {
     List<Tarea> tareas = new ArrayList<Tarea>();
     ArrayAdapter<Tarea> dataAdapter;
 
-
+    //Al iniciar el activity, consultamos las tareas  almacenadas en la base de datos
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +57,7 @@ public class TareasActivity extends AppCompatActivity {
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spTarea.setAdapter(dataAdapter);
-
+        //Al seleccionar una tarea en el Spinner, se cargan los demás datos de la tarea en el resto de TextViews
         spTarea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -72,6 +75,9 @@ public class TareasActivity extends AppCompatActivity {
         buscarTarea();
     }
 
+    /*Método para consultar las tareas almacenadas en la base de datos seleccionándolas desde el spinner
+    los datos se trataran en formato Json y hago uso de la libreria Volley
+     */
     private void buscarTarea() {
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {

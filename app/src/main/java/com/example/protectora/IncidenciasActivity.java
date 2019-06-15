@@ -33,6 +33,7 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
+//En esta clase doy de alta incidencias en la base de datos haciendo uso de mi web service
 public class IncidenciasActivity extends AppCompatActivity {
     ImageView imgImagen;
     EditText txtTitulo, txtDescripcion;
@@ -51,14 +52,17 @@ public class IncidenciasActivity extends AppCompatActivity {
         txtDescripcion=(EditText)findViewById(R.id.txtDescripcion);
         btnEnviar=(Button) findViewById(R.id.btnEnviar);
 
+        //Al pulsar el btnEnviar, hacemos uso de la api para dar de alta la incidencia
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //URL donde está alojado el código PHP para dar de alta incidencias
                 ejecutarIncidencia("http://5.154.58.36/apiAndroid/api/incidencias/postIncidencias.php");
             }
         });
 
     }
+    //Este método nos permite obtener una foto de la incidencia, ya sea desde la galería o desde nuestra propia cámara
     public void clicObtener(View view) {
         RadioButton radCamara = findViewById(R.id.radCamara);
         RadioButton radGaleria = findViewById(R.id.radGaleria);
@@ -98,7 +102,7 @@ public class IncidenciasActivity extends AppCompatActivity {
         ImageView imgImagen = findViewById(R.id.imgImagen);
         imgImagen.setImageBitmap(imagen);
     }
-
+    //Este método nos permite utilizar Base64 para el tratamiento de imágenes
     private String imgToBase64(ImageView imgView) {
         BitmapDrawable drawable = (BitmapDrawable) imgView.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -109,7 +113,7 @@ public class IncidenciasActivity extends AppCompatActivity {
         String image = Base64.encodeToString(bb, flags);
         return "data:image/png;base64," + image;
     }
-
+    //Este método recoge los parámetros de la incidencia para inyectar los datos en la base de datos
     private void ejecutarIncidencia(String URL){
         String img64 = imgToBase64(imgImagen);
         JSONObject params = new JSONObject();
@@ -124,10 +128,11 @@ public class IncidenciasActivity extends AppCompatActivity {
         } catch (JSONException error) {
 
         }
-
+        //Por medio de una Request y nuestros datos en formato JSON, ejecutamos el alta a través de la API
         JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                //Si el alta se ha llevado a cabo correctamente, aparecerá este mensaje Toast
                 Toast.makeText(getApplicationContext(), "Incidencia registrada", Toast.LENGTH_SHORT).show();
                 finish();
                 startActivity(getIntent());
@@ -136,10 +141,13 @@ public class IncidenciasActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                //Si se ha producido un error, aparecerá este mensaje Toast
                 Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
             }
         } ){
         };
+
+        //Hacemos uso de la librería Volley para ejecutar nuestra request
         requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(request);
     }

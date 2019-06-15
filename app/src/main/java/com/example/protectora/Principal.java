@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+
+//Esta clase nos permite navegar entre los activities correspondientes a tareas, animales e incidencias
 public class Principal extends AppCompatActivity {
     ImageView tareas;
     ImageView animales;

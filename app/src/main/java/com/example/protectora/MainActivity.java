@@ -21,10 +21,14 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+/*
+Esta clase contiene un login que aún no tiene funcionalidad real al no contar con una api en el web service para tal fin,
+de forma que su única utilidad actualmente es dar paso a la siguiente pantalla.
+En versiones posteriores se añadirá un login real.
+ */
 public class MainActivity extends AppCompatActivity {
     EditText txtNombreUsuario, txtContrasenaUsuario;
     Button btnEntrar;
-    JSONArray ja;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

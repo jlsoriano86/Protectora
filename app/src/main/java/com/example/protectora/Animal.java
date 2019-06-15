@@ -1,5 +1,6 @@
 package com.example.protectora;
 
+//Clase POJO con todos los atributos de los animales
 public class Animal {
     private String name;
 

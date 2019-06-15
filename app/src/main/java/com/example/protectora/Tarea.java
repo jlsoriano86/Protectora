@@ -1,5 +1,6 @@
 package com.example.protectora;
 
+//Clase POJO con todos los atributos de las tareas
 public class Tarea {
     private String name;
 

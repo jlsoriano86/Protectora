@@ -31,9 +31,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//En esta clase consulto los animales almacenados en la base de datos haciendo uso de mi web service
 public class ConsultaAnimalesActivity extends AppCompatActivity {
     Spinner spAnimal;
+    //URL donde está alojado el código PHP para consultar los animales almacenados en la base de datos
     String URL="http://5.154.58.36/apiAndroid/api/animals/getAnimals.php/";
     ImageView imgImagen;
     TextView txtId, txtNacimiento, txtTipo, txtEstado;
@@ -41,7 +42,7 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
     List<Animal> animales = new ArrayList<Animal>();
     ArrayAdapter<Animal> dataAdapter;
 
-
+    //Al iniciar el activity, consultamos los animales almacenados en la base de datos
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +58,7 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spAnimal.setAdapter(dataAdapter);
-
+        //Al seleccionar un animal en el Spinner, se cargan los demás datos del animal en el resto de TextViews
         spAnimal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -94,7 +95,9 @@ public class ConsultaAnimalesActivity extends AppCompatActivity {
     }
 
 
-
+    /*Método para consultar los animales almacenados en la base de datos seleccionándolos desde el spinner,
+    para ello, tratamos los datos como un objeto JSON y hacemos uso de la librería Volley
+     */
     private void buscarAnimal() {
         RequestQueue requestQueue=Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+//Esta clase nos permite navegar por las distintas activities correspondientes a las operaciones CRUD de animales
 public class AnimalesActivity extends AppCompatActivity {
     Button altaAnimales;
     Button consultaAnimales;

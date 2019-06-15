@@ -46,9 +46,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//En esta clase consulto los animales almacenados en la base de datos haciendo uso de mi web service y modifico sus datos
 public class ModificaAnimalesActivity extends AppCompatActivity {
-
     Spinner spAnimal;
+    //URL donde está alojado el código PHP para consultar los animales almacenados en la base de datos
     String URL="http://5.154.58.36/apiAndroid/api/animals/getAnimals.php/";
     Button btnModifica;
     Spinner spEstado;
@@ -64,7 +65,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
     List<Animal> animales = new ArrayList<Animal>();
     ArrayAdapter<Animal> dataAdapter2;
 
-
+    //Al iniciar el activity, consultamos los animales de la base de datos
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +98,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
 
         dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spAnimal.setAdapter(dataAdapter2);
-
+        //Al seleccionar un animal en el Spinner, se cargan los demás datos del animal en el resto de TextViews
         spAnimal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -139,14 +140,16 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
         });
 
         buscarAnimal();
-
+        //Al pulsar el btnModifica, hacemos uso de la api para modificar los datos del animal
         btnModifica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //URL donde está alojado el código PHP para modificar animales
                 ejecutarModificacion("http://5.154.58.36/apiAndroid/api/animals/putAnimals.php");
             }
         });
     }
+    //Este método nos permite obtener una foto del animal, ya sea desde la galería o desde nuestra propia cámara
     public void clicObtener(View view) {
         RadioButton radCamara = findViewById(R.id.radCamara);
         RadioButton radGaleria = findViewById(R.id.radGaleria);
@@ -186,7 +189,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
         ImageView imgImagen = findViewById(R.id.imgImagen);
         imgImagen.setImageBitmap(imagen);
     }
-
+    //Este método nos permite utilizar Base64 para el tratamiento de imágenes
     private String imgToBase64(ImageView imgView) {
         BitmapDrawable drawable = (BitmapDrawable) imgView.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
@@ -199,7 +202,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
     }
 
 
-
+    //Método para consultar los animales de la base de datos seleccionándolos desde el spinner
     private void buscarAnimal() {
         RequestQueue requestQueue=Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest=new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
@@ -244,6 +247,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
+    //Este método nos permite modificar al animal seleccionado en la base de datos
     private void ejecutarModificacion(String URL){
         Estado st = list.get(spEstado.getSelectedItemPosition());
         String img64 = imgToBase64(imgImagen);
@@ -263,11 +267,13 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
         } catch (JSONException error) {
 
         }
-
+        //Por medio de una Request y nuestros datos en formato JSON, ejecutamos la modificación a través de la API
         JsonObjectRequest request=new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                //Si la modificación se ha llevado a cabo correctamente, aparecerá este mensaje Toast
                 Toast.makeText(getApplicationContext(), "Animal modificado", Toast.LENGTH_SHORT).show();
+                //Tras la modificación, reinicio la activity
                 finish();
                 startActivity(getIntent());
 
@@ -277,6 +283,7 @@ public class ModificaAnimalesActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 StringWriter sw = new StringWriter();
                 error.printStackTrace(new PrintWriter(sw));
+                //Si ha habido algún error en la modificación, aparecerá este mensaje Toast
                 Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
             }
         } ){

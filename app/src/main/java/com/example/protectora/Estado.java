@@ -1,5 +1,5 @@
 package com.example.protectora;
-
+//Esta clase se utiliza para cargar los estados de los animales
 public class Estado {
     private String name;
     private String value;
